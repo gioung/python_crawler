@@ -1,3 +1,4 @@
+import os
 import ssl
 import sys
 import time
@@ -10,6 +11,8 @@ from selenium import webdriver
 
 from collection import crawler
 
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # crawling_pelicana()를 확장해서 naver처럼 처리해보기
 def crawling_pelicana():
     results = []
@@ -51,9 +54,10 @@ def crawling_pelicana():
 
 
 def crawling_nene():
+
     results = []
     before_info = ''
-    for page in count(start=1):
+    for page in count(start=48):
         url = 'https://nenechicken.com/17_new/sub_shop01.asp?page={}&ex_select=1&ex_select2=&IndexSword=&GUBUN=C'.format(page)
         html = crawler.crawling(url)
 
@@ -93,7 +97,7 @@ def crawling_nene():
     #
     # store
     table = pd.DataFrame(results, columns=['name', 'address'])
-    table.to_csv('__results__/nene.csv', encoding='utf-8', mode='w', index=True)
+    table.to_csv('/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
     print(table)
 
     # for result in results:
@@ -134,7 +138,7 @@ def crawling_kyochon():
 def crawling_goobne():
 
     url = 'http://www.goobne.co.kr/store/search_store.jsp'
-    wd = webdriver.Chrome('D:\cafe24\chromedriver.exe')
+    wd = webdriver.Chrome('/cafe24/chromedriver/chromedriver.exe')
     wd.get(url)
     time.sleep(5)
     results = []
