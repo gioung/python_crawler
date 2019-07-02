@@ -1,6 +1,4 @@
 import os
-import ssl
-import sys
 import time
 from datetime import datetime
 from itertools import count
@@ -19,7 +17,7 @@ def crawling_pelicana():
         url = 'https://pelicana.co.kr/store/stroe_search.html?page={}&branch_name=&gu=&si='.format(page)
         html = crawler.crawling(url)
 
-        bs = BeautifulSoup(html, 'lxml')
+        bs = BeautifulSoup(html, 'html.parser')
         tag_table = bs.find('table', attrs={'class': 'table mt20'})
         tag_tbody = tag_table.find('tbody')
         tags_tr = tag_tbody.findAll('tr')
@@ -60,7 +58,7 @@ def crawling_nene():
         url = 'https://nenechicken.com/17_new/sub_shop01.asp?page={}&ex_select=1&ex_select2=&IndexSword=&GUBUN=C'.format(page)
         html = crawler.crawling(url)
 
-        bs = BeautifulSoup(html, 'lxml')
+        bs = BeautifulSoup(html, 'html.parser')
         tag_div = bs.find('div', attrs={'class': 'shopWrap'})
         # print(tag_div.__dict__)
 
@@ -113,7 +111,7 @@ def crawling_kyochon():
             # 끝 검출
             if html is None:
                 break
-            bs = BeautifulSoup(html, 'lxml')
+            bs = BeautifulSoup(html, 'html.parser')
             tag_ul = bs.find('ul', attrs={'class':'list'})
             tags_span = tag_ul.findAll('span', attrs={'class':'store_item'})
 
@@ -151,7 +149,7 @@ def crawling_goobne():
         html = wd.page_source
 
         # parsing with bs4
-        bs = BeautifulSoup(html, 'lxml')
+        bs = BeautifulSoup(html, 'html.parser')
         tag_tbody = bs.find('tbody', attrs={'id': 'store_list'})
         tags_tr = tag_tbody.findAll('tr')
 
