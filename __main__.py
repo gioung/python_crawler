@@ -5,14 +5,12 @@ import time
 from datetime import datetime
 from itertools import count
 from urllib.request import Request, urlopen
-import numpy
-import pandas as pd
+# import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
 from collection import crawler
 
-del numpy
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # crawling_pelicana()를 확장해서 naver처럼 처리해보기
 def crawling_pelicana():
@@ -43,8 +41,8 @@ def crawling_pelicana():
             results.append(t)
 
     # store
-    table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-    table.to_csv('__results__/pelicana.csv', encoding='utf-8', mode='w', index=True)
+    # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+    # table.to_csv('__results__/pelicana.csv', encoding='utf-8', mode='w', index=True)
     # print(table)
 
     for result in results:
@@ -97,9 +95,9 @@ def crawling_nene():
             results.append(tuple(strings))
     #
     # store
-    table = pd.DataFrame(results, columns=['name', 'address'])
-    table.to_csv('/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
-    print(table)
+    # table = pd.DataFrame(results, columns=['name', 'address'])
+    # table.to_csv('/root/crawling-results/nene.csv', encoding='utf-8', mode='w', index=True)
+    # print(table)
 
     # for result in results:
     #     print(result)
@@ -130,8 +128,8 @@ def crawling_kyochon():
                 results.append(t)
 
         # store
-        table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-        table.to_csv('__results__/kyochon.csv', encoding='utf-8', mode='w', index=True)
+        # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+        # table.to_csv('__results__/kyochon.csv', encoding='utf-8', mode='w', index=True)
 
         for result in results:
              print(result)
@@ -172,8 +170,8 @@ def crawling_goobne():
             results.append((name, address) + tuple(sidogu))
 
         # store
-        table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
-        table.to_csv('__results__/goobne.csv', encoding='utf-8', mode='w', index=True)
+        # table = pd.DataFrame(results, columns=['name', 'address', 'sido', 'gugun'])
+        # table.to_csv('__results__/goobne.csv', encoding='utf-8', mode='w', index=True)
 
 
     wd.quit()
