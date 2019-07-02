@@ -5,13 +5,14 @@ import time
 from datetime import datetime
 from itertools import count
 from urllib.request import Request, urlopen
+import numpy
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
 from collection import crawler
 
-
+del numpy
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # crawling_pelicana()를 확장해서 naver처럼 처리해보기
 def crawling_pelicana():
